@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios Francisco Rivas</title>
+    <h1>Ejercicios Francisco Rivas</h1>
+  </head>
+  <body>
+    <script>
+      //1. Mínimo
+      // El capítulo anterior introdujo la función estándar Math.min que devuelve su argumento más pequeño. Nosotros podemos construir algo como eso ahora. Escribe una función min que tome dos argumentos y retorne su mínimo.
+
+      // // Tu codigo aqui.
+
+      // console.log(min(0, 10));
+      // // → 0
+      // console.log(min(0, -10));
+      // // → -10
+
+      const min = (min, ormin) => {
+        if (typeof min !== "number")
+          console.error(`El numero ${min} ingresado no es un numero`);
+        if (typeof ormin !== "number")
+          console.error(`El numero ${ormin} ingresado no es un numero`);
+        if (min === 0 || ormin === 0) {
+          console.error(
+            `Los numeros ingresados ${min}||${ormin} no puede ser 0`
+          );
+        } else {
+          console.log(Math.min(min, ormin));
+        }
+      };
+      //min(1, -10);
+
+      //2. Recursión
+      // Hemos visto que % (el operador de residuo) se puede usar para probar si un número es par o impar usando % 2 para ver si es divisible entre dos. Aquí hay otra manera de definir si un número entero positivo es par o impar:
+
+      // Zero es par.
+
+      // Uno es impar.
+
+      // Para cualquier otro número N, su paridad es la misma que N - 2.
+
+      // Define una función recursiva esPar que corresponda a esta descripción. La función debe aceptar un solo parámetro (un número entero, positivo) y devolver un Booleano.
+
+      // Pruébalo con 50 y 75. Observa cómo se comporta con -1. Por qué? Puedes pensar en una forma de arreglar esto?
+
+      // // Tu codigo aqui.
+
+      // console.log(esPar(50));
+      // // → true
+      // console.log(esPar(75));
+      // // → false
+      // console.log(esPar(-1));
+      // // → ??
+
+      const par = (numero) => {
+        if (numero < 1) {
+          return console.error(
+            `El numero ${numero} evaluado no puede ser 0 o negativo`
+          );
+        } else {
+          numero % 2 === 0
+            ? console.log(`El numero "${numero}" evaluado es par`)
+            : console.log(`El numero "${numero}" evaluado es impar`);
+        }
+      };
+
+      // par(50);
+      // par(75);
+      // par(-1);
+
+      //  3. Conteo de frijoles
+      // Puedes obtener el N-ésimo carácter, o letra, de un string escribiendo "string"[N]. El valor devuelto será un string que contiene solo un carácter (por ejemplo, "f"). El primer carácter tiene posición cero, lo que hace que el último se encuentre en la posición string.length - 1. En otras palabras, un string de dos caracteres tiene una longitud de 2, y sus carácteres tendrán las posiciones 0 y 1.
+
+      // Escribe una función contarFs que tome un string como su único argumento y devuelva un número que indica cuántos caracteres “F” en mayúsculas haya en el string.
+
+      // Despues, escribe una función llamada contarCaracteres que se comporte como contarFs, excepto que toma un segundo argumento que indica el carácter que debe ser contado (en lugar de contar solo caracteres “F” en mayúscula). Reescribe contarFs para que haga uso de esta nueva función.
+
+      // // Tu código aquí.
+
+      // console.log(contarFs("FFC"));
+      // // → 2
+      // console.log(contarCaracteres("kakkerlak", "k"));
+      // // → 4
+      // const caracterRepetido = (palabra = "", caracter = "") => {
+      //   if (palabra === "")
+      //     return console.error(`La palabra a evaluar no puede estar vacío`);
+
+      //   caracter === undefined
+      //     ? console.log(palabra.split("F").length - 1)
+      //     : console.log(palabra.split(caracter).length - 1);
+      // };
+      // caracterRepetido("F");
+      // caracterRepetido("FFC");
+      // caracterRepetido("kakkerlak", "k");
+
+      //4. La suma de un rango
+
+      //Escribe una función rango que tome dos argumentos, inicio y final, y retorne un array que contenga todos los números desde inicio hasta (e incluyendo) final.
+
+      // Luego, escribe una función suma que tome un array de números y retorne la suma de estos números. Ejecuta el programa de ejemplo y ve si realmente retorna 55.
+
+      // Como una misión extra, modifica tu función rango para tomar un tercer argumento opcional que indique el valor de “paso” utilizado para cuando construyas el array. Si no se da ningún paso, los elementos suben en incrementos de uno, correspondiedo al comportamiento anterior. La llamada a la función rango(1, 10, 2) deberia retornar [1, 3, 5, 7, 9]. Asegúrate de que también funcione con valores de pasos negativos para que rango(5, 2, -1) produzca [5, 4, 3, 2].
+
+      const rangos = (n1, n2, suma) => {
+        if (suma === undefined) {
+          let numero = [];
+          if (n1 < n2) {
+            for (let i = n1; i < n2 + 1; i++) {
+              numero.push(i);
+            }
+            return console.log(numero);
+          } else {
+            for (let i = n1; i > n2 - 1; i--) {
+              numero.push(i);
+            }
+            return console.log(numero);
+          }
+        }
+        if (suma === "suma") {
+          let valorInicial = 0;
+          let numero = [];
+          if (n1 < n2) {
+            for (let i = n1; i < n2 + 1; i++) {
+              numero.push(i);
+            }
+            return numero.reduce(
+              (acumulador, valoractual) => acumulador + valoractual,
+              valorInicial
+            );
+          }
+        }
+      };
+      // console.log(rango(1, 10));
+      // // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+      // // Tu código aquí
+
+      // console.log(rango(5, 2, -1));
+      // // → [5, 4, 3, 2]
+      // console.log(sum(rango(1, 10)));
+      // // → 55
+
+      // 5. Revirtiendo un array
+      // Los arrays tienen un método reverse que cambia al array invirtiendo el orden en que aparecen sus elementos. Para este ejercicio, escribe dos funciones, revertirArray y revertirArrayEnSuLugar. El primero, revertirArray, toma un array como argumento y produce un nuevo array que tiene los mismos elementos pero en el orden inverso. El segundo, revertirArrayEnSuLugar, hace lo que hace el métodoreverse: modifica el array dado como argumento invirtiendo sus elementos. Ninguno de los dos puede usar el método reverse estándar.
+
+      // Pensando en las notas acerca de los efectos secundarios y las funciones puras en el capítulo anterior, qué variante esperas que sea útil en más situaciones? Cuál corre más rápido?
+
+      const revertirArray2 = (array) => {
+        n = Object.keys(array).length;
+        o = [];
+        for (i = n * 2; i > n; i--) {
+          array2 = array[i - n - 1];
+          o.push(array2);
+        }
+        console.log(o);
+      };
+
+      //revertirArray2(["O", "C", "S", "I", "C", "N", "A", "R", "F"]);
+
+      //       6. Una lista
+      // Los objetos, como conjuntos genéricos de valores, se pueden usar para construir todo tipo de estructuras de datos. Una estructura de datos común es la lista (no confundir con un array). Una lista es un conjunto anidado de objetos, con el primer objeto conteniendo una referencia al segundo, el segundo al tercero, y así sucesivamente.
+
+      // let lista = {
+      //   valor: 1,
+      //   resto: {
+      //     valor: 2,
+      //     resto: {
+      //       valor: 3,
+      //       resto: null
+      //     }
+      //   }
+      // };
+      // Los objetos resultantes forman una cadena, como esta:
+
+      // 7. Una lista vinculada
+      // Algo bueno de las listas es que pueden compartir partes de su estructura. Por ejemplo, si creo dos nuevos valores {valor: 0, resto: lista} y {valor: -1, resto: lista} (con lista refiriéndose a la vinculación definida anteriormente), ambos son listas independientes, pero comparten la estructura que conforma sus últimos tres elementos. La lista original también sigue siendo una lista válida de tres elementos.
+
+      // Escribe una función arrayALista que construya una estructura de lista como el que se muestra arriba cuando se le da [1, 2, 3] como argumento. También escribe una función listaAArray que produzca un array de una lista. Luego agrega una función de utilidad preceder, que tome un elemento y una lista y creé una nueva lista que agrega el elemento al frente de la lista de entrada, y posicion, que toma una lista y un número y retorne el elemento en la posición dada en la lista (con cero refiriéndose al primer elemento) o undefined cuando no exista tal elemento.
+
+      // Si aún no lo has hecho, también escribe una versión recursiva de posicion.
+
+      // // Tu código aquí.
+
+      // console.log(arrayALista([10, 20]));
+      // // → {valor: 10, resto: {valor: 20, resto: null}}
+      // console.log(listaAArray(arrayALista([10, 20, 30])));
+      // // → [10, 20, 30]
+      // console.log(preceder(10, preceder(20, null)));
+      // // → {valor: 10, resto: {valor: 20, resto: null}}
+      // console.log(posicion(arrayALista([10, 20, 30]), 1));
+      // // → 20
+
+      // 8. Comparación profunda
+      // El operador == compara objetos por identidad. Pero a veces preferirias comparar los valores de sus propiedades reales.
+
+      // Escribe una función igualdadProfunda que toma dos valores y retorne true solo si tienen el mismo valor o son objetos con las mismas propiedades, donde los valores de las propiedades sean iguales cuando comparadas con una llamada recursiva a igualdadProfunda.
+
+      // Para saber si los valores deben ser comparados directamente (usa el operador == para eso) o si deben tener sus propiedades comparadas, puedes usar el operador typeof. Si produce "object" para ambos valores, deberías hacer una comparación profunda. Pero tienes que tomar una excepción tonta en cuenta: debido a un accidente histórico, typeof null también produce "object".
+
+      // La función Object.keys será útil para cuando necesites revisar las propiedades de los objetos para compararlos.
+
+      // // Tu código aquí.
+
+      // let objeto = {aqui: {hay: "un"}, objeto: 2};
+      // console.log(igualdadProfunda(objeto, objeto));
+      // // → true
+      // console.log(igualdadProfunda(objeto, {aqui: 1, object: 2}));
+      // // → false
+      // console.log(igualdadProfunda(objeto, {aqui: {hay: "un"}, objeto: 2}));
+      // // → true
+    </script>
+  </body>
+</html>
