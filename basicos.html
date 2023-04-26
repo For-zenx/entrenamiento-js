@@ -182,7 +182,20 @@
 
       // Si aún no lo has hecho, también escribe una versión recursiva de posicion.
 
-      // // Tu código aquí.
+      const lista = (array) => {
+        let listado = {
+          valor: array[0],
+          resto: {
+            valor: array[1],
+            resto: {
+              valor: array[2],
+              resto: null,
+            },
+          },
+        };
+        console.log(listado);
+      };
+      lista(["10", "20"]);
 
       // console.log(arrayALista([10, 20]));
       // // → {valor: 10, resto: {valor: 20, resto: null}}
